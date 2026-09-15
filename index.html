@@ -386,15 +386,41 @@
     gap: 24px; margin-top: 60px;
   }
   .target-card {
-    padding: 40px 28px; text-align: center;
+    text-align: center;
     border: 1px solid rgba(169,124,62,.28);
     background: rgba(169,124,62,.04);
     transition: border-color .3s, background .3s;
+    overflow: hidden;
   }
   .target-card:hover {
     border-color: rgba(201,169,110,.35);
     background: rgba(201,169,110,.05);
   }
+  .target-img-wrap {
+    position: relative;
+    width: 100%; height: 170px;
+    overflow: hidden;
+    background: var(--dark-3);
+  }
+  .target-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; opacity: .92;
+    transition: opacity .4s, transform .4s;
+    filter: brightness(1.05) contrast(1.05) saturate(1.1);
+  }
+  .target-card:hover .target-img-wrap img { opacity: 1; transform: scale(1.05); }
+  .target-img-fallback {
+    display: none;
+    align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .82rem; letter-spacing: .12em; color: var(--text-muted);
+    background:
+      repeating-linear-gradient(45deg, rgba(169,124,62,.15) 0 1px, transparent 1px 13px),
+      var(--dark-3);
+    text-align: center; padding: 0 14px;
+  }
+  .target-card-body { padding: 28px 24px 32px; }
   .target-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem; color: var(--gold-light);
@@ -759,20 +785,48 @@
     <h2 class="section-title">どなたでも<br>ご利用いただけます</h2>
     <div class="target-grid">
       <div class="target-card">
-        <h3>デート・カップル</h3>
-        <p>プライベートな時間を大切にしたいおふたりに。快適な客室でゆったりお過ごしいただけます。</p>
+        <div class="target-img-wrap">
+          <!-- 例: src="scene-couple.jpg" -->
+          <img src="scene-couple.jpg" alt="デート・カップル" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="target-img-fallback">画像挿入エリア<br>デート・カップル</div>
+        </div>
+        <div class="target-card-body">
+          <h3>デート・カップル</h3>
+          <p>プライベートな時間を大切にしたいおふたりに。快適な客室でゆったりお過ごしいただけます。</p>
+        </div>
       </div>
       <div class="target-card">
-        <h3>女子会</h3>
-        <p>気の置けない仲間とのひとときにも。にぎやかにお過ごしいただけます。</p>
+        <div class="target-img-wrap">
+          <!-- 例: src="scene-girls.jpg" -->
+          <img src="scene-girls.jpg" alt="女子会" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="target-img-fallback">画像挿入エリア<br>女子会</div>
+        </div>
+        <div class="target-card-body">
+          <h3>女子会</h3>
+          <p>気の置けない仲間とのひとときにも。にぎやかにお過ごしいただけます。</p>
+        </div>
       </div>
       <div class="target-card">
-        <h3>ビジネス利用</h3>
-        <p>出張や仕事の合間の休息に。Wi-Fi完備で作業もはかどります。</p>
+        <div class="target-img-wrap">
+          <!-- 例: src="scene-business.jpg" -->
+          <img src="scene-business.jpg" alt="ビジネス利用" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="target-img-fallback">画像挿入エリア<br>ビジネス利用</div>
+        </div>
+        <div class="target-card-body">
+          <h3>ビジネス利用</h3>
+          <p>出張や仕事の合間の休息に。Wi-Fi完備で作業もはかどります。</p>
+        </div>
       </div>
       <div class="target-card">
-        <h3>観光・旅行</h3>
-        <p>鳥取観光の拠点としても便利な立地。旅の疲れをゆっくり癒せます。</p>
+        <div class="target-img-wrap">
+          <!-- 例: src="scene-sightseeing.jpg" -->
+          <img src="scene-sightseeing.jpg" alt="観光・旅行" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="target-img-fallback">画像挿入エリア<br>観光・旅行</div>
+        </div>
+        <div class="target-card-body">
+          <h3>観光・旅行</h3>
+          <p>鳥取観光の拠点としても便利な立地。旅の疲れをゆっくり癒せます。</p>
+        </div>
       </div>
     </div>
   </div>
