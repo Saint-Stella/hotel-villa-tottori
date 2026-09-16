@@ -71,8 +71,38 @@
     backdrop-filter: blur(6px);
   }
   .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    min-width: 0;
+  }
+  .nav-logo-img {
+    height: 38px; width: auto; display: block;
+    flex-shrink: 0;
+  }
+  .nav-logo-img-fallback {
+    display: none;
+    align-items: center; justify-content: center;
+    height: 38px; padding: 0 10px; flex-shrink: 0;
+    border: 1px dashed rgba(169,124,62,.45);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: .58rem; letter-spacing: .08em; color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .nav-logo-divider {
+    width: 1px; height: 26px; flex-shrink: 0;
+    background: rgba(169,124,62,.35);
+  }
+  .nav-logo-text {
+    display: flex; flex-direction: column; min-width: 0;
+  }
+  .nav-logo-text .nav-logo-name {
     font-family: 'Noto Serif JP', serif;
     font-size: 1.15rem; letter-spacing: .22em; color: var(--gold);
+    line-height: 1.2; white-space: nowrap;
+  }
+  .nav-logo-text .nav-logo-company {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: .56rem; letter-spacing: .12em; color: var(--text-muted);
+    margin-top: 3px; white-space: nowrap;
   }
   .nav-right { display: flex; align-items: center; gap: 36px; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -575,6 +605,18 @@
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
     .access-layout { grid-template-columns: 1fr; }
+    .nav-logo { gap: 10px; }
+    .nav-logo-img, .nav-logo-img-fallback { height: 32px; }
+    .nav-logo-text .nav-logo-name { font-size: .95rem; letter-spacing: .14em; }
+  }
+  @media (max-width: 420px) {
+    nav { padding: 14px 16px; }
+    .nav-logo { gap: 8px; }
+    .nav-logo-img, .nav-logo-img-fallback { height: 28px; }
+    .nav-logo-divider { display: none; }
+    .nav-logo-text .nav-logo-name { font-size: .85rem; letter-spacing: .1em; }
+    .nav-logo-text .nav-logo-company { font-size: .5rem; }
+    .nav-tel a { font-size: .9rem; }
   }
 </style>
 </head>
@@ -588,7 +630,16 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">ホテル ヴィラ</div>
+  <div class="nav-logo">
+    <!-- 会社ロゴ：logo.png をindex.htmlと同じ場所にアップロードすると表示されます -->
+    <img class="nav-logo-img" src="logo.png" alt="株式会社エイム" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-img-fallback">ロゴ挿入エリア</div>
+    <span class="nav-logo-divider"></span>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">ホテル ヴィラ</span>
+      <span class="nav-logo-company">運営：株式会社エイム</span>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#discount">深夜割引</a></li>
     <li><a href="#price">料金</a></li>
